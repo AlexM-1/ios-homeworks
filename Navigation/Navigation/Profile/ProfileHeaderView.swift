@@ -11,30 +11,35 @@ class ProfileHeaderView: UIView {
         imageView.layer.cornerRadius = 50
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Hipster Cat"
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
 
     private lazy var statusLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Waiting for something..."
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14)
         label.isUserInteractionEnabled = true
-        let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(labelClicked))
+        let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(statusLabelClicked))
         label.addGestureRecognizer(guestureRecognizer)
         return label
     }()
 
-    private lazy var statusButton: UIButton = {
+
+    private lazy var setStatusButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Set status", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
@@ -44,13 +49,13 @@ class ProfileHeaderView: UIView {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(statusButtonTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(setStatusButtonTap), for: .touchUpInside)
         return button
     }()
 
-
     private lazy var statusTextField: UITextField = {
         let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.text = statusText
         textField.textColor = .black
         textField.backgroundColor = .white
@@ -58,31 +63,13 @@ class ProfileHeaderView: UIView {
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
-        textField.addTarget(self, action: #selector(setStatus), for: .editingChanged)
+        textField.addTarget(self, action: #selector(setStatusTextField), for: .editingChanged)
         textField.isHidden = true
         textField.placeholder = "Status"
         let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
         textField.leftViewMode = UITextField.ViewMode.always
         textField.leftView = spacerView
         return textField
-    }()
-
-
-
-    private lazy var labelStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        return stackView
-    }()
-
-
-    private lazy var infoStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = 20
-        return stackView
     }()
 
 
@@ -96,54 +83,64 @@ class ProfileHeaderView: UIView {
     }
 
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        imageView.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
-
-        nameLabel.frame = CGRect(x: imageView.frame.maxX + 16,
-                                 y: 27,
-                                 width: self.bounds.width - (imageView.frame.maxX + 16) - 16,
-                                 height: 32)
-
-        statusLabel.frame = CGRect(x: nameLabel.frame.minX,
-                                   y: imageView.frame.maxY - 18 - 14,
-                                   width: self.bounds.width - (imageView.frame.maxX + 16) - 16,
-                                   height: 18)
-
-        statusTextField.frame = CGRect(x: nameLabel.frame.minX,
-                                       y: statusLabel.frame.maxY,
-                                       width: self.bounds.width - (imageView.frame.maxX + 16) - 16,
-                                       height: 40)
-
-        statusButton.frame = CGRect(x: 16, y: imageView.frame.maxY + 32, width: self.bounds.width - 32, height: 50)
-
-    }
-
     private func setupView() {
         addSubview(imageView)
         addSubview(nameLabel)
-        addSubview(statusButton)
         addSubview(statusLabel)
         addSubview(statusTextField)
+        addSubview(setStatusButton)
+        createViewConstraint()
     }
 
-    @objc func statusButtonTap() {
+    private func createViewConstraint() {
+               NSLayoutConstraint.activate([
+            imageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
+            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            imageView.widthAnchor.constraint(equalToConstant: 100),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1.0),
+
+            nameLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 16),
+            nameLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16),
+            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
+
+            statusLabel.leftAnchor.constraint(equalTo: nameLabel.leftAnchor),
+            statusLabel.rightAnchor.constraint(equalTo: nameLabel.rightAnchor),
+            statusLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 84),
+
+            setStatusButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
+            setStatusButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16),
+            setStatusButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 156),
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+
+            statusTextField.leftAnchor.constraint(equalTo: nameLabel.leftAnchor),
+            statusTextField.rightAnchor.constraint(equalTo: nameLabel.rightAnchor),
+            statusTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 110),
+
+            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+
+        ])
+
+    }
+
+
+    @objc func setStatusButtonTap() {
         print(statusLabel.text ?? "nilStatus")
         statusLabel.text = statusText
         statusTextField.isHidden.toggle()
+
     }
 
 
 
-    @objc func setStatus(_ textField: UITextField) {
+    @objc func setStatusTextField(_ textField: UITextField) {
         statusText = textField.text ?? ""
         if statusText == "" {
             statusText = "Статус не установлен"
         }
     }
 
-    
-    @objc func labelClicked(_ sender: Any) {
+
+    @objc func statusLabelClicked(_ sender: Any) {
         print("UILabel clicked")
         statusTextField.isHidden = false
     }

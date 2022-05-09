@@ -33,11 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().standardAppearance = tabBarAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
 
+
         let navBarAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithDefaultBackground()
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
 
+        
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
         
