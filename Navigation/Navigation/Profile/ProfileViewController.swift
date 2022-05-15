@@ -21,7 +21,6 @@ class ProfileViewController: UIViewController {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(newButtonTap), for: .touchUpInside)
         return button
     }()
 
@@ -54,10 +53,5 @@ class ProfileViewController: UIViewController {
         ])
 
     }
-
-    @objc func newButtonTap() {
-
-    }
-
     
 }
