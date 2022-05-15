@@ -27,12 +27,9 @@ class ProfileHeaderView: UIView {
     private lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Waiting for something..."
+        label.text = statusText
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14)
-        label.isUserInteractionEnabled = true
-        let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(statusLabelClicked))
-        label.addGestureRecognizer(guestureRecognizer)
         return label
     }()
 
@@ -56,15 +53,12 @@ class ProfileHeaderView: UIView {
     private lazy var statusTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.text = statusText
         textField.textColor = .black
         textField.backgroundColor = .white
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
-        textField.addTarget(self, action: #selector(setStatusTextField), for: .editingChanged)
-        textField.isHidden = true
         textField.placeholder = "Status"
         let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
         textField.leftViewMode = UITextField.ViewMode.always
@@ -93,7 +87,7 @@ class ProfileHeaderView: UIView {
     }
 
     private func createViewConstraint() {
-               NSLayoutConstraint.activate([
+        NSLayoutConstraint.activate([
             imageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
             imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             imageView.widthAnchor.constraint(equalToConstant: 100),
@@ -125,24 +119,16 @@ class ProfileHeaderView: UIView {
 
     @objc func setStatusButtonTap() {
         print(statusLabel.text ?? "nilStatus")
+        statusTextChanged(statusTextField.text ?? "")
         statusLabel.text = statusText
-        statusTextField.isHidden.toggle()
-
     }
 
 
-
-    @objc func setStatusTextField(_ textField: UITextField) {
-        statusText = textField.text ?? ""
+    func statusTextChanged(_ status: String) {
+        statusText = status
         if statusText == "" {
             statusText = "Статус не установлен"
         }
-    }
-
-
-    @objc func statusLabelClicked(_ sender: Any) {
-        print("UILabel clicked")
-        statusTextField.isHidden = false
     }
 
 }
