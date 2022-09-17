@@ -20,7 +20,7 @@ final class Checker {
         if login.hash == self.login.hash && pswd.hash == self.pswd.hash {
             return true
         } else {
-            return true   //false
+            return true  //false
 
         }
         

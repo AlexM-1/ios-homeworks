@@ -3,12 +3,12 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-    
-    
-    var delegate: LoginViewControllerDelegate?
-    
+
+    private let viewModel: LogInViewModel
+
     private let nc = NotificationCenter.default
-    
+
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,7 +101,16 @@ class LogInViewController: UIViewController {
         button.addTarget(self, action: #selector(logInButtonTap), for: .touchUpInside)
         return button
     }()
-    
+
+
+    init(viewModel: LogInViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,23 +195,10 @@ class LogInViewController: UIViewController {
     }
     
     @objc func logInButtonTap() {
-        
-        
-#if DEBUG
-        let currentUserService = TestUserService()
-        let profileViewController = ProfileViewController(userService: currentUserService, name: "Test name")
-        
-        
-#else
-        let currentUserService = CurrentUserService()
-        currentUserService.user.name = loginTextField.text ?? ""
-        let profileViewController = ProfileViewController(userService: currentUserService, name: loginTextField.text ?? "")
-#endif
-        
-        
-        if delegate?.authorization(login: loginTextField.text!, pswd: passwordTextField.text!) == true {
-            self.navigationController?.pushViewController(profileViewController, animated: true)
-        } else { print("неправильное имя пользователя или пароль") }
+        viewModel.login = loginTextField.text!
+        viewModel.pswd = passwordTextField.text!
+        viewModel.changeState(.logInButtonTap)
+
     }
     
 }
@@ -215,8 +211,5 @@ extension LogInViewController: UITextFieldDelegate {
 }
 
 
-protocol LoginViewControllerDelegate: AnyObject {
-    
-    func authorization(login: String, pswd: String) -> Bool
-}
+
 
