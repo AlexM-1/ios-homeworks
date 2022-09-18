@@ -3,21 +3,17 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
-    private lazy var postButton = CustomButton(title: "Перейти на пост", titleColor: .white) {
+    private let coordinator: FeedCoordinator
 
+    private lazy var postButton = CustomButton(title: "Перейти на пост", titleColor: .white) {
         [weak self] in
-        let postViewController = PostViewController()
-        postViewController.titlePost = self?.post.title ?? ""
-        self?.navigationController?.pushViewController(postViewController, animated: true)
+        self?.coordinator.showPostViewController(postTitle: self?.post.title ?? "")
     }
 
-
     private lazy var postButtonTwo = CustomButton(title: "Перейти на пост", titleColor: .white) {
-
         [weak self] in
-        let postViewController = PostViewController()
-        postViewController.titlePost = self?.post.title ?? ""
-        self?.navigationController?.pushViewController(postViewController, animated: true)
+        self?.coordinator.showPostViewController(postTitle: self?.post.title ?? "")
+
     }
 
 
@@ -87,6 +83,15 @@ class FeedViewController: UIViewController {
         return stackView
     }()
 
+    init(coordinator: FeedCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +120,7 @@ class FeedViewController: UIViewController {
             stackView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -32),
             postButton.heightAnchor.constraint(equalTo: postButtonTwo.heightAnchor, multiplier: 1),
 
-
+            
             checkGuessTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             checkGuessTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             checkGuessTextField.heightAnchor.constraint(equalToConstant: 50),
