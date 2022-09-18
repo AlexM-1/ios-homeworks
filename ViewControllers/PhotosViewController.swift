@@ -6,7 +6,16 @@ import iOSIntPackage
 class PhotosViewController: UIViewController {
     
     //    private let imagePublisherFacade = ImagePublisherFacade()
-    //    private var images: [UIImage] = []
+
+    private var filteredImages: [UIImage] = []
+
+
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,11 +77,18 @@ class PhotosViewController: UIViewController {
     
     private func layout(){
         view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
+
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+
+
         ])
     }
     
@@ -86,67 +102,33 @@ class PhotosViewController: UIViewController {
         
         let startTimeChrome = CACurrentMediaTime()
         print("imageProcessor start with filter: .chrome, qos: .userInteractive")
+        self.activityIndicator.startAnimating()
         
-        imageProcessor.processImagesOnThread(sourceImages: images, filter: .chrome, qos: .userInteractive) { _ in
+        imageProcessor.processImagesOnThread(sourceImages: images, filter: .crystallize(radius: 15.0), qos: .userInteractive) { outputImage in
             
             let endTime = CACurrentMediaTime()
             print("Total Runtime with filter: .chrome, qos: .userInteractive: \(endTime - startTimeChrome) s")
+
+            self.receive (images: outputImage)
             
         }
         
-        // filter: .posterize
-        
-        let startTimePosterize = CACurrentMediaTime()
-        print("imageProcessor start with filter: .posterize, qos: .userInitiated")
-        
-        imageProcessor.processImagesOnThread(sourceImages: images, filter: .posterize, qos: .userInitiated) {  _ in
-            
-            let endTime = CACurrentMediaTime()
-            print("Total Runtime with filter: .posterize, qos: .userInitiated: \(endTime - startTimePosterize) s")
-            
-        }
-        
-        // filter: .crystallize
-        
-        let startTimeCrystallize = CACurrentMediaTime()
-        print("imageProcessor start with filter: .crystallize, qos: .utility")
-        
-        imageProcessor.processImagesOnThread(sourceImages: images, filter: .crystallize(radius: 4.0), qos: .utility) {  _ in
-            
-            let endTime = CACurrentMediaTime()
-            print("Total Runtime with filter: .crystallize, qos: .utility: \(endTime - startTimeCrystallize) s")
-            
-        }
-        
-        // filter: .gaussianBlur
-        
-        let startTimeGaussianBlur = CACurrentMediaTime()
-        print("imageProcessor start with filter: .gaussianBlur, qos: .default")
-        
-        imageProcessor.processImagesOnThread(sourceImages: images, filter: .gaussianBlur(radius: 7.5), qos: .default) {  _ in
-            
-            let endTime = CACurrentMediaTime()
-            print("Total Runtime with filter: filter: .gaussianBlur, qos: .default: \(endTime - startTimeGaussianBlur) s")
-            
-        }
-        
-        // filter: .colorInvert
-        
-        let startTimeColorInvert = CACurrentMediaTime()
-        print("imageProcessor start with filter: .colorInvert, qos: .background")
-        
-        imageProcessor.processImagesOnThread(sourceImages: images, filter: .colorInvert, qos: .background) {  _ in
-            
-            let endTime = CACurrentMediaTime()
-            print("Total Runtime with filter: .colorInvert, qos: .background: \(endTime - startTimeColorInvert) s")
-            
-        }
-        
-        
-        
+
     }
+
     
-    
+    private func receive(images: [CGImage?]) {
+
+        let safeCGImages = images.compactMap() { $0 }
+
+        filteredImages = safeCGImages.map() { UIImage(cgImage: $0) }
+
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.collectionView.reloadData()
+        }
+    }
+
     
 }
 
@@ -154,7 +136,7 @@ class PhotosViewController: UIViewController {
 
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return filteredImages.count
     }
     
     
@@ -162,13 +144,14 @@ extension PhotosViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as! CollectionViewCell
         
-        cell.setupCell(image: images[indexPath.item], cornerRadius: 0)
+        cell.setupCell(image: filteredImages[indexPath.item], cornerRadius: 0)
         return cell
     }
     
     
     
 }
+
 
 
 //extension PhotosViewController: ImageLibrarySubscriber {
