@@ -13,11 +13,13 @@ class MainTabBarViewController: UITabBarController {
 
     private let logInViewController = Factory(flow: .profile)
 
-
+    private let banner = Banner()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setControllers()
+        banner.vc = self
+        banner.show()
     }
 
     private func setControllers() {

@@ -74,42 +74,33 @@ class LogInViewController: UIViewController {
         $0.leftView = spacerView
         return $0
     }(UITextField())
-
-
-    private lazy var activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        return activityIndicator
-    }()
     
-
-
-    private lazy var logInButton = CustomButton(title: "Log In", titleColor: .white) {
-        [weak self] in
-
-        self?.viewModel.login = self?.loginTextField.text! ?? ""
-        self?.viewModel.pswd = self?.passwordTextField.text! ?? ""
-        self?.viewModel.changeState(.logInButtonTap)
-    }
-
-
-    private lazy var bruteForceButton = CustomButton(title: "Подобрать пароль", titleColor: .white) {
-        [weak self] in
-
-        self?.activityIndicator.startAnimating()
-
-        let queue = DispatchQueue.global(qos: .utility)
-        queue.async {
-            self?.viewModel.changeState(.bruteForceButtonTap)
-
-            DispatchQueue.main.async {
-                self?.activityIndicator.stopAnimating()
-                self?.passwordTextField.text = self?.viewModel.pswd
-                self?.passwordTextField.isSecureTextEntry = false
-
+    
+    
+    private lazy var logInButton: UIButton = {
+        
+        var configuration = UIButton.Configuration.filled()
+        configuration.background.image = UIImage(named: "blue_pixel")
+        let button = UIButton(configuration: configuration)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Log In", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 10
+        button.layer.masksToBounds = true
+        
+        button.configurationUpdateHandler = { button in
+            switch button.state {
+            case .normal:
+                button.alpha = 1.0
+            case .selected, .highlighted, .disabled:
+                button.alpha = 0.8
+            default:
+                button.alpha = 0.8
             }
         }
-    }
+        button.addTarget(self, action: #selector(logInButtonTap), for: .touchUpInside)
+        return button
+    }()
 
 
     init(viewModel: LogInViewModel) {
@@ -165,10 +156,12 @@ class LogInViewController: UIViewController {
         stackView.addArrangedSubview(passwordTextField)
         
         [loginTextField, passwordTextField].forEach { stackView.addArrangedSubview($0) }
-        [logoImageView, stackView, logInButton, bruteForceButton, activityIndicator].forEach { contentView.addSubview($0) }
+        [logoImageView, stackView, logInButton].forEach { contentView.addSubview($0) }
+        
     }
     
     private func layout() {
+        
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -196,22 +189,18 @@ class LogInViewController: UIViewController {
             logInButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             logInButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
-
-
-
-            activityIndicator.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
-
-
-            bruteForceButton.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 16),
-            bruteForceButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
-            bruteForceButton.heightAnchor.constraint(equalToConstant: 50),
-            bruteForceButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-
+            logInButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
     }
+    
+    @objc func logInButtonTap() {
+        viewModel.login = loginTextField.text!
+        viewModel.pswd = passwordTextField.text!
+        viewModel.changeState(.logInButtonTap)
 
+    }
+    
 }
 
 extension LogInViewController: UITextFieldDelegate {

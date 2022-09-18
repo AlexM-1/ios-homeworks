@@ -16,6 +16,7 @@
 		3A321E7428571FC500A97E9D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A321E7328571FC500A97E9D /* CollectionViewCell.swift */; };
 		3A321E7628573E4700A97E9D /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A321E7528573E4700A97E9D /* PhotosViewController.swift */; };
 		3A3FD4F32820817D00F3C669 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FD4F22820817D00F3C669 /* ProfileHeaderView.swift */; };
+		3A5E241D28D77A42003FE000 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E241C28D77A42003FE000 /* Banner.swift */; };
 		3A66D19A2805F4B300F06826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A66D1992805F4B300F06826 /* AppDelegate.swift */; };
 		3A66D19C2805F4B300F06826 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A66D19B2805F4B300F06826 /* SceneDelegate.swift */; };
 		3A66D1A32805F4B400F06826 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A66D1A22805F4B400F06826 /* Assets.xcassets */; };
@@ -42,7 +43,6 @@
 		3ABC4B5E28BB7BDB002BFB9F /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC4B5D28BB7BDB002BFB9F /* ProfileCoordinator.swift */; };
 		3ABC4B6028BB7BEE002BFB9F /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC4B5F28BB7BEE002BFB9F /* FeedCoordinator.swift */; };
 		3ADC15B9284B603500912285 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC15B8284B603500912285 /* LogInViewController.swift */; };
-		3AF5068228D7171B003D1995 /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5068128D7171B003D1995 /* BruteForce.swift */; };
 		3AF869A028A045A8002C264A /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8699F28A045A8002C264A /* Checker.swift */; };
 		3AF869A228A0498B002C264A /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF869A128A0498B002C264A /* LoginInspector.swift */; };
 		8B41643662303F7AE7F9CC51 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2DB61D306C2CA4D614193E /* Pods_Navigation.framework */; };
@@ -95,6 +95,7 @@
 		3A321E7328571FC500A97E9D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		3A321E7528573E4700A97E9D /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		3A3FD4F22820817D00F3C669 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		3A5E241C28D77A42003FE000 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		3A66D1962805F4B300F06826 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A66D1992805F4B300F06826 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A66D19B2805F4B300F06826 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		3ABC4B5D28BB7BDB002BFB9F /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		3ABC4B5F28BB7BEE002BFB9F /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		3ADC15B8284B603500912285 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		3AF5068128D7171B003D1995 /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 		3AF8699F28A045A8002C264A /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		3AF869A128A0498B002C264A /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
 		64DAE5804D2B77B547D2EE58 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,7 +164,6 @@
 			children = (
 				3A0399862896D0DA00EF8EC7 /* UserService.swift */,
 				3A0399872896D0DA00EF8EC7 /* User.swift */,
-				3AF5068128D7171B003D1995 /* BruteForce.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +222,7 @@
 				3A321E772859BCBE00A97E9D /* ViewCells */,
 				3A66D1992805F4B300F06826 /* AppDelegate.swift */,
 				3A66D19B2805F4B300F06826 /* SceneDelegate.swift */,
+				3A5E241C28D77A42003FE000 /* Banner.swift */,
 				3A66D1A22805F4B400F06826 /* Assets.xcassets */,
 				3A66D1A42805F4B400F06826 /* LaunchScreen.storyboard */,
 				3A75E1B8284C98C80087C92B /* UIView+Extension.swift */,
@@ -510,7 +510,6 @@
 				3A321E722856FF7300A97E9D /* PhotosTableViewCell.swift in Sources */,
 				3ABC4B5A28BB719F002BFB9F /* MainTabBarViewController.swift in Sources */,
 				3A16D35E28AE8F7D001F0FE3 /* CustomButton.swift in Sources */,
-				3AF5068228D7171B003D1995 /* BruteForce.swift in Sources */,
 				3A7720F128C49DB100534414 /* LogInViewModel.swift in Sources */,
 				3A75E1B9284C98C80087C92B /* UIView+Extension.swift in Sources */,
 				3A66D1B22806002000F06826 /* ProfileViewController.swift in Sources */,
@@ -525,6 +524,7 @@
 				3A321E7428571FC500A97E9D /* CollectionViewCell.swift in Sources */,
 				3ABC4B6028BB7BEE002BFB9F /* FeedCoordinator.swift in Sources */,
 				3ABC4B5728BB711F002BFB9F /* MainCoordinator.swift in Sources */,
+				3A5E241D28D77A42003FE000 /* Banner.swift in Sources */,
 				3A3FD4F32820817D00F3C669 /* ProfileHeaderView.swift in Sources */,
 				3A75E1B7284C97480087C92B /* PostTableViewCell.swift in Sources */,
 				3A321E7628573E4700A97E9D /* PhotosViewController.swift in Sources */,

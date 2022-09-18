@@ -20,7 +20,6 @@ final class LogInViewModel {
     
     enum Action {
         case logInButtonTap
-        case bruteForceButtonTap
     }
     
     
@@ -38,11 +37,6 @@ final class LogInViewModel {
                 print("неправильное имя пользователя или пароль")
             }
 
-        case .bruteForceButtonTap:
-
-            let bruteForce = BruteForce()
-            bruteForce.generatePassword(digits: 3)
-            pswd = bruteForce.bruteForce()
         }
     }
 }
