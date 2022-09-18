@@ -42,6 +42,7 @@
 		3ABC4B5E28BB7BDB002BFB9F /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC4B5D28BB7BDB002BFB9F /* ProfileCoordinator.swift */; };
 		3ABC4B6028BB7BEE002BFB9F /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC4B5F28BB7BEE002BFB9F /* FeedCoordinator.swift */; };
 		3ADC15B9284B603500912285 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC15B8284B603500912285 /* LogInViewController.swift */; };
+		3AF5068228D7171B003D1995 /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5068128D7171B003D1995 /* BruteForce.swift */; };
 		3AF869A028A045A8002C264A /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8699F28A045A8002C264A /* Checker.swift */; };
 		3AF869A228A0498B002C264A /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF869A128A0498B002C264A /* LoginInspector.swift */; };
 		8B41643662303F7AE7F9CC51 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2DB61D306C2CA4D614193E /* Pods_Navigation.framework */; };
@@ -120,6 +121,7 @@
 		3ABC4B5D28BB7BDB002BFB9F /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		3ABC4B5F28BB7BEE002BFB9F /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		3ADC15B8284B603500912285 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		3AF5068128D7171B003D1995 /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 		3AF8699F28A045A8002C264A /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		3AF869A128A0498B002C264A /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
 		64DAE5804D2B77B547D2EE58 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				3A0399862896D0DA00EF8EC7 /* UserService.swift */,
 				3A0399872896D0DA00EF8EC7 /* User.swift */,
+				3AF5068128D7171B003D1995 /* BruteForce.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				3A321E722856FF7300A97E9D /* PhotosTableViewCell.swift in Sources */,
 				3ABC4B5A28BB719F002BFB9F /* MainTabBarViewController.swift in Sources */,
 				3A16D35E28AE8F7D001F0FE3 /* CustomButton.swift in Sources */,
+				3AF5068228D7171B003D1995 /* BruteForce.swift in Sources */,
 				3A7720F128C49DB100534414 /* LogInViewModel.swift in Sources */,
 				3A75E1B9284C98C80087C92B /* UIView+Extension.swift in Sources */,
 				3A66D1B22806002000F06826 /* ProfileViewController.swift in Sources */,
