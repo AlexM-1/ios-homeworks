@@ -14,7 +14,7 @@ class Banner {
     func show() {
 
         if timer == nil {
-            timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
+            timer = Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) { timer in
 
 
 

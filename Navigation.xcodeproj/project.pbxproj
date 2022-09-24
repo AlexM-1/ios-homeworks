@@ -42,6 +42,7 @@
 		3ABC4B5C28BB7A96002BFB9F /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC4B5B28BB7A96002BFB9F /* Factory.swift */; };
 		3ABC4B5E28BB7BDB002BFB9F /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC4B5D28BB7BDB002BFB9F /* ProfileCoordinator.swift */; };
 		3ABC4B6028BB7BEE002BFB9F /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC4B5F28BB7BEE002BFB9F /* FeedCoordinator.swift */; };
+		3AD632B428DF287700553A7C /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD632B328DF287700553A7C /* Dynamic.swift */; };
 		3ADC15B9284B603500912285 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC15B8284B603500912285 /* LogInViewController.swift */; };
 		3AF869A028A045A8002C264A /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8699F28A045A8002C264A /* Checker.swift */; };
 		3AF869A228A0498B002C264A /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF869A128A0498B002C264A /* LoginInspector.swift */; };
@@ -121,6 +122,7 @@
 		3ABC4B5B28BB7A96002BFB9F /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		3ABC4B5D28BB7BDB002BFB9F /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		3ABC4B5F28BB7BEE002BFB9F /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
+		3AD632B328DF287700553A7C /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		3ADC15B8284B603500912285 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3AF8699F28A045A8002C264A /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		3AF869A128A0498B002C264A /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 		3AB4BEB228CCE54A008B187E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				3AD632B528DF2C0100553A7C /* Bindings */,
 				3A7720F228C4C88400534414 /* ProfileViewModel.swift */,
 				3A7720F028C49DB100534414 /* LogInViewModel.swift */,
 			);
@@ -290,6 +293,14 @@
 				3ABC4B5B28BB7A96002BFB9F /* Factory.swift */,
 			);
 			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		3AD632B528DF2C0100553A7C /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				3AD632B328DF287700553A7C /* Dynamic.swift */,
+			);
+			path = Bindings;
 			sourceTree = "<group>";
 		};
 		431365D35ED81B5020FE4BF6 /* Pods */ = {
@@ -521,6 +532,7 @@
 				3ADC15B9284B603500912285 /* LogInViewController.swift in Sources */,
 				3ABC4B5E28BB7BDB002BFB9F /* ProfileCoordinator.swift in Sources */,
 				3A0399892896D0DA00EF8EC7 /* User.swift in Sources */,
+				3AD632B428DF287700553A7C /* Dynamic.swift in Sources */,
 				3A321E7428571FC500A97E9D /* CollectionViewCell.swift in Sources */,
 				3ABC4B6028BB7BEE002BFB9F /* FeedCoordinator.swift in Sources */,
 				3ABC4B5728BB711F002BFB9F /* MainCoordinator.swift in Sources */,

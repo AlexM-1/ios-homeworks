@@ -3,12 +3,11 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-
+    
     private let viewModel: LogInViewModel
-
+    
     private let nc = NotificationCenter.default
-
-
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +82,7 @@ class LogInViewController: UIViewController {
         configuration.background.image = UIImage(named: "blue_pixel")
         let button = UIButton(configuration: configuration)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Log In 0 sec.", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
@@ -101,13 +100,13 @@ class LogInViewController: UIViewController {
         button.addTarget(self, action: #selector(logInButtonTap), for: .touchUpInside)
         return button
     }()
-
-
+    
+    
     init(viewModel: LogInViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -118,13 +117,26 @@ class LogInViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         setupView()
         layout()
+        bindViewModel()
+        viewModel.startTimer()
+        
     }
     
+    
+    func bindViewModel() {
+        viewModel.logInButtonText.bind({ text in
+            DispatchQueue.main.async {
+                self.logInButton.setTitle(text, for: .normal)
+            }
+        })
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nc.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
     
@@ -198,7 +210,7 @@ class LogInViewController: UIViewController {
         viewModel.login = loginTextField.text!
         viewModel.pswd = passwordTextField.text!
         viewModel.changeState(.logInButtonTap)
-
+        
     }
     
 }
