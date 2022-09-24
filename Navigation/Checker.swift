@@ -1,8 +1,8 @@
 
 final class Checker {
     
-    private let login = "Vasily"
-    private let pswd = "StrongPassword"
+    private let login = "Alex"
+    private let pswd = "123"
     
     static let shared = Checker()
     
@@ -20,7 +20,7 @@ final class Checker {
         if login.hash == self.login.hash && pswd.hash == self.pswd.hash {
             return true
         } else {
-            return true   //false
+            return false
 
         }
         

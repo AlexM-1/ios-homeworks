@@ -4,8 +4,7 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
-    
-    var delegate: LoginViewControllerDelegate?
+    private let viewModel: LogInViewModel
     
     private let nc = NotificationCenter.default
     
@@ -83,7 +82,7 @@ class LogInViewController: UIViewController {
         configuration.background.image = UIImage(named: "blue_pixel")
         let button = UIButton(configuration: configuration)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Log In 0 sec.", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
@@ -103,19 +102,41 @@ class LogInViewController: UIViewController {
     }()
     
     
+    init(viewModel: LogInViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
         setupView()
         layout()
+        bindViewModel()
+        viewModel.startTimer()
+        
     }
     
+    
+    func bindViewModel() {
+        viewModel.logInButtonText.bind({ text in
+            DispatchQueue.main.async {
+                self.logInButton.setTitle(text, for: .normal)
+            }
+        })
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nc.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
     
@@ -186,23 +207,10 @@ class LogInViewController: UIViewController {
     }
     
     @objc func logInButtonTap() {
+        viewModel.login = loginTextField.text!
+        viewModel.pswd = passwordTextField.text!
+        viewModel.changeState(.logInButtonTap)
         
-        
-#if DEBUG
-        let currentUserService = TestUserService()
-        let profileViewController = ProfileViewController(userService: currentUserService, name: "Test name")
-        
-        
-#else
-        let currentUserService = CurrentUserService()
-        currentUserService.user.name = loginTextField.text ?? ""
-        let profileViewController = ProfileViewController(userService: currentUserService, name: loginTextField.text ?? "")
-#endif
-        
-        
-        if delegate?.authorization(login: loginTextField.text!, pswd: passwordTextField.text!) == true {
-            self.navigationController?.pushViewController(profileViewController, animated: true)
-        } else { print("неправильное имя пользователя или пароль") }
     }
     
 }
@@ -215,8 +223,5 @@ extension LogInViewController: UITextFieldDelegate {
 }
 
 
-protocol LoginViewControllerDelegate: AnyObject {
-    
-    func authorization(login: String, pswd: String) -> Bool
-}
+
 
