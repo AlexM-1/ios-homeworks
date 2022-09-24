@@ -12,7 +12,9 @@ class InfoViewController: UIViewController {
                    message: "I'm message of alert",
                    preferredStyle: .alert)
                alert.addAction(UIAlertAction(title: "Default", style: .default, handler: { _ in print("pressed Default") }))
-               alert.addAction(UIAlertAction(title: "Destructive", style: .destructive, handler: { _ in print("pressed Destructive") }))
+               alert.addAction(UIAlertAction(title: "Destructive", style: .destructive, handler: { _ in print("pressed Destructive")
+                   
+               }))
                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in print("pressed Cancel") }))
 
         self?.present(alert, animated: true, completion: nil)

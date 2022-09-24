@@ -5,9 +5,8 @@ final class LoginInspector: LoginInspectorProtocol {
     func authorization(login: String, pswd: String) -> Bool {
         let checker = Checker.shared
         return checker.checkPassword(login: login, pswd: pswd)
-        
     }
-    
+
 }
 
 

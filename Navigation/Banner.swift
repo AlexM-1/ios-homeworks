@@ -31,7 +31,6 @@ class Banner {
 
                 let laterAction = UIAlertAction(title: "Позже", style: .default) { _ in print("tapped Позже")
                     self.isShow = false
-
                 }
 
 

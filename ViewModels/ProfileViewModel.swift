@@ -1,9 +1,3 @@
-//
-//  ProfileViewModel.swift
-//  Navigation
-//
-//  Created by Alex M on 04.09.2022.
-//
 
 import StorageService
 import Foundation
@@ -14,10 +8,7 @@ final class ProfileViewModel {
     
     let posts = PostModel.createModel()
 
-
-    let userService: UserService
-    let name: String
-
+    let user: User
 
     enum Action {
         case cellDidTap
@@ -25,11 +16,8 @@ final class ProfileViewModel {
 
 
     init(coordinator: ProfileCoordinator,
-         userService: UserService,
-         name: String) {
-
-        self.userService = userService
-        self.name = name
+         user: User) {
+        self.user = user
         self.coordinator = coordinator
     }
 

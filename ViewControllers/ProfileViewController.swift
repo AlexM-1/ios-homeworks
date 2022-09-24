@@ -32,8 +32,10 @@ class ProfileViewController: UIViewController {
     
     
     private lazy var profileHeaderView: ProfileHeaderView = {
-        let user = viewModel.userService.getUser(name: viewModel.name)
-        let profileHeaderView = ProfileHeaderView(frame: .zero, user: user ?? User())
+        //let user = viewModel.userService.getUser(name: viewModel.name)
+      //  let user = User()
+
+        let profileHeaderView = ProfileHeaderView(frame: .zero, user: viewModel.user)
         return profileHeaderView
     }()
     

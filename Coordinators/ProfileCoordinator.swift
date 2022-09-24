@@ -6,21 +6,12 @@ final class ProfileCoordinator {
 
     var navController: UINavigationController?
 
-    func showScreenAfterLogIn(coordinator: ProfileCoordinator, name: String) {
+    private var alertIsShow: Bool = false
 
-#if DEBUG
-        let currentUserService = TestUserService()
-        let viewModel = ProfileViewModel(coordinator: coordinator, userService: currentUserService, name: "Test name")
+    func showScreenAfterLogIn(coordinator: ProfileCoordinator, user: User) {
 
 
-#else
-        let currentUserService = CurrentUserService()
-        currentUserService.user.name = name
-        let viewModel = ProfileViewModel(coordinator: coordinator, userService: currentUserService, name: name)
-
-#endif
-
-
+        let viewModel = ProfileViewModel(coordinator: coordinator, user: user)
         let controller = ProfileViewController(viewModel: viewModel)
         navController?.pushViewController(controller, animated: true)
 
@@ -31,10 +22,20 @@ final class ProfileCoordinator {
 
         let controller = PhotosViewController()
         navController?.pushViewController(controller, animated: true)
-
-
     }
 
+    func showAlert(title: String, message: String) {
 
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "ОК", style: .cancel))
+
+        if navController?.presentedViewController == nil {
+            navController?.present(alert, animated: true) }
+    }
+    
 }
 
