@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AVFoundation_Audio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzv-MR-GKZ" userLabel="stopButton">
+                                <rect key="frame" x="247" y="712" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jGh-k1-vmZ"/>
+                                    <constraint firstAttribute="width" constant="50" id="lXs-Kg-qWE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" image="stop.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="stopButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OTx-gl-o3x"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNB-Ce-3gZ" userLabel="TrackName">
+                                <rect key="frame" x="186.5" y="398" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvj-dc-TjY" userLabel="backwardButton">
+                                <rect key="frame" x="20" y="712" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="KeM-IM-IIX"/>
+                                    <constraint firstAttribute="height" constant="50" id="RvY-uW-7zz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" image="backward.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="backwardButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bhr-VK-UCu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLm-Dw-GSX" userLabel="forwardButton">
+                                <rect key="frame" x="344" y="712" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6d8-me-GCC"/>
+                                    <constraint firstAttribute="width" constant="50" id="R0H-p0-7gL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" image="forward.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="forwardButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QU7-1t-tsU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLh-VW-nOW" userLabel="playButton">
+                                <rect key="frame" x="117" y="712" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Mnk-Ij-V89"/>
+                                    <constraint firstAttribute="width" constant="50" id="mlG-c6-ycl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" image="play.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="playPauseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="weg-gk-TDE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANs-6f-247">
+                                <rect key="frame" x="143" y="144" width="128" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Show Video">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="ShowVideoButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rdZ-Bg-qiM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpL-c1-Cvc">
+                                <rect key="frame" x="136" y="205" width="142" height="38"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Record Audio">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="recordAudioButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3BR-e3-bCF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NLm-Dw-GSX" secondAttribute="trailing" constant="20" id="521-4N-yPk"/>
+                            <constraint firstItem="NLm-Dw-GSX" firstAttribute="leading" relation="lessThanOrEqual" secondItem="jzv-MR-GKZ" secondAttribute="trailing" priority="900" constant="47" id="BEg-iQ-kvZ"/>
+                            <constraint firstItem="jzv-MR-GKZ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="bLh-VW-nOW" secondAttribute="trailing" priority="800" constant="50" id="Bik-hE-TQf"/>
+                            <constraint firstItem="bLh-VW-nOW" firstAttribute="leading" relation="lessThanOrEqual" secondItem="uvj-dc-TjY" secondAttribute="trailing" priority="900" constant="47" id="L7c-Yf-SYw"/>
+                            <constraint firstItem="ANs-6f-247" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="S1J-tL-S3t"/>
+                            <constraint firstItem="IpL-c1-Cvc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TRB-u9-AW3"/>
+                            <constraint firstItem="uvj-dc-TjY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="UNd-e4-4dv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bLh-VW-nOW" secondAttribute="bottom" constant="100" id="Y3T-ZD-Xx0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NLm-Dw-GSX" secondAttribute="bottom" constant="100" id="Zkt-Ul-lZc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uvj-dc-TjY" secondAttribute="bottom" constant="100" id="aRR-wk-vlf"/>
+                            <constraint firstItem="IpL-c1-Cvc" firstAttribute="top" secondItem="ANs-6f-247" secondAttribute="bottom" constant="23" id="jJU-gl-1lN"/>
+                            <constraint firstItem="tNB-Ce-3gZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40" id="lng-cN-FAS"/>
+                            <constraint firstItem="tNB-Ce-3gZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p68-Um-dlO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jzv-MR-GKZ" secondAttribute="bottom" constant="100" id="qKl-vH-k4s"/>
+                            <constraint firstItem="ANs-6f-247" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v4O-XR-BUf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backwardButton" destination="uvj-dc-TjY" id="vTr-wQ-dmd"/>
+                        <outlet property="forwardButton" destination="NLm-Dw-GSX" id="O2C-wv-B3r"/>
+                        <outlet property="playPauseButton" destination="bLh-VW-nOW" id="27C-Ki-bem"/>
+                        <outlet property="stopButton" destination="jzv-MR-GKZ" id="b0Y-lk-O7G"/>
+                        <outlet property="trackName" destination="tNB-Ce-3gZ" id="lro-n9-O4x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5cj-vY-nla" userLabel="backward Button">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="86"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <state key="normal" image="backward.fill" catalog="system"/>
+                    <connections>
+                        <action selector="PlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jo8-tU-jbd"/>
+                        <action selector="backwardAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Mu-Lt-fnj"/>
+                    </connections>
+                </button>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="88.392857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backward.fill" catalog="system" width="128" height="79"/>
+        <image name="forward.fill" catalog="system" width="128" height="79"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="stop.fill" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
