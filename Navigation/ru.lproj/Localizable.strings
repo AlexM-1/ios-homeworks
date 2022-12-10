@@ -1,0 +1,60 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Alex M on 28.11.2022.
+  
+*/
+
+
+"Search by author" = "Поиск по автору";
+"Favorite posts" = "Избранные посты";
+"Go to the post" = "Перейти на пост";
+"Input secret word" = "Введите секретное слово";
+"empty value" = "вы ввели пустое значение";
+
+"Check" = "Проверить";
+"right" = "верно";
+"wrong" = "неверно";
+"My post title" = "Мой пост";
+"InfoView" = "Информация";
+"Password" = "Пароль";
+"Email or phone" = "Электронная почта или телефон";
+"Log In" = "Войти";
+"seconds" = "сек.";
+"sign Up" = "Создать учетную запись";
+"Failure" = "Ошибка";
+"Missing field data" = "Указано пустое поле";
+
+
+"Authorization error" =  "Ошибка авторизации";
+"Incorrect user name or password" = "Неправильное имя пользвателя или пароль";
+"User creation error" = "Ошибка создания пользователя";
+"Check the spelling of the email and password" = "Проверьте правильность написания адреса электронной почты и пароля";
+"Successfully" = "Успешно";
+
+"a new user has been created" = "новый пользователь создан";
+
+"Unknown error" = "Неизвестная ошибка";
+
+"Profile" = "Профиль";
+"Feed" = "Лента";
+
+"Favorite" = "Избранное";
+
+"Set status" = "Установить статус";
+"Set your status..." = "Введите статус";
+"Status not set" = "Статус не установлен";
+"Photos" = "Фотографии";
+
+"Photo Gallery" = "Фотогалерея";
+
+"Likes" = "Лайки";
+"Views" = "Просмотры";
+
+
+"Do you like our app?" = "Нравится наше приложение?";
+"Take the time to leave a review in the App Store" = "Найдите время оставить отзыв в App Store";
+"Don't remind me anymore" = "Больше не напоминать";
+"Later" = "Позже";
+"Estimate" = "Оценить";
